@@ -34,7 +34,7 @@ describe('Angular generator template mechanism', function () {
     });
 
     it('should generate the same appName in every file', function (done) {
-        var expectedAppName = folderName + 'App';
+        var expectedAppName = 'upperCaseBugApp';
         var expected = [
             'app/scripts/app.js',
             'app/scripts/controllers/main.js',
@@ -42,8 +42,9 @@ describe('Angular generator template mechanism', function () {
             'test/spec/controllers/main.js'
         ];
         helpers.mockPrompt(angular, {
+          compass: true,
           bootstrap: true,
-          compassBoostrap: true,
+          compassBootstrap: true,
           modules: []
         });
 

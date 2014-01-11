@@ -1,3 +1,100 @@
+<a name="v0.7.1"></a>
+### v0.7.1 (2013-12-22)
+
+
+#### Bug Fixes
+
+* **Gruntfile:** correct attribute quoting ([ca765509](http://github.com/yeoman/generator-angular/commit/ca765509b4bf3d827ac40206ea9bb84936b806cc), closes [#521](http://github.com/yeoman/generator-angular/issues/521))
+
+
+#### Features
+
+* **app:** upgrade to AngularJS 1.2.6 ([2f7fa90c](http://github.com/yeoman/generator-angular/commit/2f7fa90cc698edb565926fcf6cce77c52f5785ae))
+
+<a name="v0.7.0"></a>
+## v0.7.0 (2013-12-20)
+
+
+#### Bug Fixes
+
+* **app:**
+  * copy view files to dist folder ([8a52a265](http://github.com/yeoman/generator-angular/commit/8a52a265aa15a0f589109d6cd1dac4ae7dc5a3e9))
+  * only copy CSS if Compass is not installed ([7e586745](http://github.com/yeoman/generator-angular/commit/7e58674585e138c0f2eb81f46ef2cc4f1b9a3bf8))
+  * services use classified names ([56a71a83](http://github.com/yeoman/generator-angular/commit/56a71a83cdf90f81bb37b422ba4d40e75d28e1fe), closes [#484](http://github.com/yeoman/generator-angular/issues/484))
+  * reload JS files in watch ([d20f5bd2](http://github.com/yeoman/generator-angular/commit/d20f5bd20ba95d47447f8acceee491a0a0ba9724))
+* **build:** deselecting ngRoute does remove route stuff ([a358c1ae](http://github.com/yeoman/generator-angular/commit/a358c1ae69bff6a7708ea0a77248698f931f2e4d), closes [#486](http://github.com/yeoman/generator-angular/issues/486))
+* **deps:** hard-pin angular 1.2.5 ([49c7f980](http://github.com/yeoman/generator-angular/commit/49c7f9802c6d7e9347c73ffe018c36b750342cb1))
+* **gen:** fix bower install prompt during project gen ([706f1336](http://github.com/yeoman/generator-angular/commit/706f1336852923e409d669ae6fc6faeda7bbb017), closes [#505](http://github.com/yeoman/generator-angular/issues/505))
+
+
+#### Features
+
+* **app:**
+  * add jasmine browser global to test jshintrc ([11b6ed42](http://github.com/yeoman/generator-angular/commit/11b6ed42b5e941f25cc305eb5c4e8ba49586cf64))
+  * use lowercase file names ([23e5d772](http://github.com/yeoman/generator-angular/commit/23e5d7724e7e02e4b974f4e804f35eca33a53aea), closes [#463](http://github.com/yeoman/generator-angular/issues/463))
+  * use htmlmin for smaller HTML files ([2b85a52a](http://github.com/yeoman/generator-angular/commit/2b85a52a054ac8cf1ab86ce1cd3de7819d30ea52), closes [#469](http://github.com/yeoman/generator-angular/issues/469))
+  * use grunt-bower-install for dep management ([ba7b5051](http://github.com/yeoman/generator-angular/commit/ba7b505117307059a6d013d838c8aeff6db0e452), closes [#497](http://github.com/yeoman/generator-angular/issues/497))
+* **gen:**
+  * additional work for compass support ([11cb9943](http://github.com/yeoman/generator-angular/commit/11cb99437271b6e8f6cdaee8fd5fc9cda7a20d1d))
+  * add Compass support to the initialization process ([7fac1194](http://github.com/yeoman/generator-angular/commit/7fac1194179df3181f52258b0aa7333799fec253))
+
+
+#### Breaking Changes
+
+* Deselecting ngRoute adds controller and ng-include to index.html
+ ([a358c1ae](http://github.com/yeoman/generator-angular/commit/a358c1ae69bff6a7708ea0a77248698f931f2e4d))
+* `--minsafe` flag is now deprecated. ([f0bb8da2](http://github.com/yeoman/generator-angular/commit/f0bb8da2d67c3f627bf775e2d4f53340b5c980c4), closes [#452](http://github.com/yeoman/generator-angular/issues/452))
+* `grunt server` is now deprecated. Use `grunt serve` instead
+ ([ef056319](http://github.com/yeoman/generator-angular/commit/ef0563192a9e3fc834ae97e7ec68470bcfdf56eb))
+
+<a name="v0.6.0"></a>
+## v0.6.0 (2013-12-05)
+
+#### Breaking Changes
+
+* `grunt server` is being deprecated
+ ([ef056319](http://github.com/yeoman/generator-angular/commit/ef0563192a9e3fc834ae97e7ec68470bcfdf56eb))
+
+#### Bug Fixes
+
+* **app:**
+  * use test-specifc jshintrc ([c00c091b](http://github.com/yeoman/generator-angular/commit/c00c091bdca2b55685d81a2b84b002d73aacbdcc))
+  * add webapp upstream features and better coffee ([c23acebb](http://github.com/yeoman/generator-angular/commit/c23acebbd8fabd391bfeee0d424f26e59f756a03))
+  * use grunt-newer for styles and jshint ([b1eeb68a](http://github.com/yeoman/generator-angular/commit/b1eeb68a8290aee930887fc473034ee7f8e2ccc3))
+  * standardize comments and comment out uglify:dist ([d5d3e458](http://github.com/yeoman/generator-angular/commit/d5d3e458e70d054707c70d058454fdd3d94070fe), closes [#455](http://github.com/yeoman/generator-angular/issues/455))
+  * only include sass if sass is selected ([597b8b5c](http://github.com/yeoman/generator-angular/commit/597b8b5cfab77b78e7f6091140beda2eeee0ed54), closes [#449](http://github.com/yeoman/generator-angular/issues/449))
+
+* **deps:** upgrade dependencies ([3a57216f](http://github.com/yeoman/generator-angular/commit/3a57216ff9e3192db3804634f360253e9fcce69d))
+
+* **gen:**
+  * script paths use forward slashes ([40aa61dc](http://github.com/yeoman/generator-angular/commit/40aa61dcc1bf31918bea3d2ce9a84c93554aa64a), closes [#410](http://github.com/yeoman/generator-angular/issues/410))
+  * remove extra "App" from service spec files ([4053f11f](http://github.com/yeoman/generator-angular/commit/4053f11f800280569f5b7396ad015f0a6bcc7b49))
+  * options should have descriptions ([da001832](http://github.com/yeoman/generator-angular/commit/da001832dbdb268b3bf38f359c72b40c401273e4))
+
+* **template:** remove redundant closing tag ([d1e560e0](http://github.com/yeoman/generator-angular/commit/d1e560e0675ecb70e6c4b59cf4de9df461434a31), closes [#441](http://github.com/yeoman/generator-angular/issues/441))
+* **bootstrap:** some plugins have ordering dependencies ([3da4a130](http://github.com/yeoman/generator-angular/commit/3da4a1301e0b744c7a6054fafff26fff16b6442b))
+* **docs:** Add coffeescript=false to readme ([abd7dc38](http://github.com/yeoman/generator-angular/commit/abd7dc38be0cf511307c784f30d59c9fdcaea3e2))
+* **styles:** update path to icon images ([8daad4f2](http://github.com/yeoman/generator-angular/commit/8daad4f2de9dbde4fcc810527da7c9607e1db8d4))
+
+#### Features
+
+* **app:**
+  * imagemin handles gifs ([9341eb9b](http://github.com/yeoman/generator-angular/commit/9341eb9b710b95c95407dc54ed4af6aa4a496426))
+  * run unit tests when test scripts are changed ([94af0b51](http://github.com/yeoman/generator-angular/commit/94af0b510982b05c5a1939966e96aeccce087500))
+  * reload grunt server when gruntfile is updated ([50c6abb9](http://github.com/yeoman/generator-angular/commit/50c6abb9cce09a149253ceb8496feca813a71136))
+  * update to angular 1.2.0 ([77082c6b](http://github.com/yeoman/generator-angular/commit/77082c6b8d1dda76579f1970a270dffc359f027f))
+  * upgrade to Bootstrap 3.0.1 ([59f4b1ba](http://github.com/yeoman/generator-angular/commit/59f4b1ba73842b758174ad44a7da60af4f4db63f))
+
+* **build:**
+  * compile only changed coffeescript files in watch task ([4196e379](http://github.com/yeoman/generator-angular/commit/4196e37912993ae37812fa19d9378d8b8d2cc9da), closes [#425](http://github.com/yeoman/generator-angular/issues/425))
+  * deprecate server in favor of serve ([ef056319](http://github.com/yeoman/generator-angular/commit/ef0563192a9e3fc834ae97e7ec68470bcfdf56eb))
+
+* **gen:**
+  * add image file as example ([b161c298](http://github.com/yeoman/generator-angular/commit/b161c2982d86df1bb3de44cd9fa8aee05fc66ff3))
+  * allow app names to have custom suffix ([09f0f7b3](http://github.com/yeoman/generator-angular/commit/09f0f7b3a8c3264b7527bc9fed8c709becec99eb))
+  * add option to not add to index ([486ee146](http://github.com/yeoman/generator-angular/commit/486ee14660ac51b7cfcb4b7de50135833954f193))
+
+
 <a name="v0.5.1"></a>
 ### v0.5.1 (2013-10-22)
 

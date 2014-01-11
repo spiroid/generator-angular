@@ -12,6 +12,11 @@ var Generator = module.exports = function Generator() {
   } catch (e) {
     this.appname = path.basename(process.cwd());
   }
+  this.appname = this._.slugify(this._.humanize(this.appname));
+  this.scriptAppName = this._.camelize(this.appname) + angularUtils.appName(this);
+
+  this.cameledName = this._.camelize(this.name);
+  this.classedName = this._.classify(this.name);
 
   if (typeof this.env.options.appPath === 'undefined') {
     try {
@@ -66,21 +71,21 @@ util.inherits(Generator, yeoman.generators.NamedBase);
 Generator.prototype.appTemplate = function (src, dest) {
   yeoman.generators.Base.prototype.template.apply(this, [
     src + this.scriptSuffix,
-    path.join(this.env.options.appPath, dest) + this.scriptSuffix
+    path.join(this.env.options.appPath, dest.toLowerCase()) + this.scriptSuffix
   ]);
 };
 
 Generator.prototype.testTemplate = function (src, dest) {
   yeoman.generators.Base.prototype.template.apply(this, [
     src + this.scriptSuffix,
-    path.join(this.env.options.testPath, dest) + this.scriptSuffix
+    path.join(this.env.options.testPath, dest.toLowerCase()) + this.scriptSuffix
   ]);
 };
 
 Generator.prototype.htmlTemplate = function (src, dest) {
   yeoman.generators.Base.prototype.template.apply(this, [
     src,
-    path.join(this.env.options.appPath, dest)
+    path.join(this.env.options.appPath, dest.toLowerCase())
   ]);
 };
 
@@ -92,7 +97,7 @@ Generator.prototype.addScriptToIndex = function (script) {
       file: fullPath,
       needle: '<!-- endbuild -->',
       splicable: [
-        '<script src="scripts/' + script + '.js"></script>'
+        '<script src="scripts/' + script.replace('\\', '/') + '.js"></script>'
       ]
     });
   } catch (e) {
@@ -101,6 +106,11 @@ Generator.prototype.addScriptToIndex = function (script) {
 };
 
 Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory, skipAdd) {
+  // Services use classified names
+  if (this.generatorName.toLowerCase() === 'service') {
+    this.cameledName = this.classedName;
+  }
+
   this.appTemplate(appTemplate, path.join('scripts', targetDirectory, this.name));
   this.testTemplate(testTemplate, path.join(targetDirectory, this.name));
   if (!skipAdd) {

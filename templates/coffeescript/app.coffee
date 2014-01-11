@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('<%= _.camelize(appname) %>App', [<%= angularModules %>])
+angular.module('<%= scriptAppName %>', [<%= angularModules %>])<% if (ngRoute) { %>
   .config ($routeProvider) ->
     $routeProvider
       .when '/',
@@ -8,3 +8,4 @@ angular.module('<%= _.camelize(appname) %>App', [<%= angularModules %>])
         controller: 'MainCtrl'
       .otherwise
         redirectTo: '/'
+<% } %>

@@ -22,8 +22,8 @@ Generator.prototype.rewriteAppJs = function () {
     ),
     needle: '.otherwise',
     splicable: [
-      "  templateUrl: 'views/" + this.name + ".html'" + (coffee ? "" : "," ),
-      "  controller: '" + this._.classify(this.name) + "Ctrl'"
+      "  templateUrl: 'views/" + this.name.toLowerCase() + ".html'" + (coffee ? "" : "," ),
+      "  controller: '" + this.classedName + "Ctrl'"
     ]
   };
 
