@@ -93,12 +93,12 @@ Generator.prototype.askForBootstrap = function askForBootstrap() {
   this.prompt([{
     type: 'confirm',
     name: 'bootstrap',
-    message: 'Would you like to include Twitter Bootstrap?',
+    message: 'Would you like to include Twitter Bootstrap ?',
     default: true
   }, {
     type: 'confirm',
     name: 'compassBootstrap',
-    message: 'Would you like to use the SCSS version of Twitter Bootstrap with the Compass CSS Authoring Framework?',
+    message: 'Would you like to use the SCSS version of Twitter Bootstrap with the Compass CSS Authoring Framework ?',
     default: true,
     when: function (props) {
       return props.bootstrap;
@@ -106,7 +106,22 @@ Generator.prototype.askForBootstrap = function askForBootstrap() {
   }], function (props) {
     this.bootstrap = props.bootstrap;
     this.compassBootstrap = props.compassBootstrap;
+    cb();
+  }.bind(this));
+};
 
+Generator.prototype.askForSemanticUI = function askForSemanticUI() {
+  var cb = this.async();
+  this.prompt([{
+    type: 'confirm',
+    name: 'semantic-ui',
+    message: 'Would you like to include Semantic UI ?',
+    default: false,
+    when: function (props) {
+      return !props.bootstrap;
+    }
+  }], function (props) {
+    this.semanticui = props.semanticui;
     cb();
   }.bind(this));
 };
