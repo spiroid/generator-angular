@@ -115,7 +115,7 @@ Generator.prototype.welcome = function welcome() {
   if (!this.options['skip-welcome-message']) {
     console.log(this.yeoman);
     console.log(
-      'Out of the box I include Bootstrap and some AngularJS recommended modules.\n'
+      'Out of the box I include Bootstrap or Semantic-UI and some AngularJS recommended modules.\n'
     );
 
     // Deprecation notice for minsafe
@@ -173,12 +173,12 @@ Generator.prototype.askForSemanticUI = function askForSemanticUI() {
   var cb = this.async();
   this.prompt([{
     type: 'confirm',
-    name: 'semantic-ui',
+    name: 'semanticui',
     message: 'Would you like to include Semantic UI ?',
     default: false,
     when: function (props) {
-      return !props.bootstrap;
-    }
+      return !this.bootstrap;
+    }.bind(this)
   }], function (props) {
     this.semanticui = props.semanticui;
     cb();
