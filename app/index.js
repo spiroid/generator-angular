@@ -144,43 +144,45 @@ Generator.prototype.askForCompass = function askForCompass() {
   }.bind(this));
 };
 
-Generator.prototype.askForBootstrap = function askForBootstrap() {
+Generator.prototype.askForCSSFramework = function askForCSSFramework() {
   var compass = this.compass;
   var cb = this.async();
 
   this.prompt([{
-    type: 'confirm',
-    name: 'bootstrap',
-    message: 'Would you like to include Twitter Bootstrap?',
-    default: true
-  }, {
-    type: 'confirm',
-    name: 'compassBootstrap',
-    message: 'Would you like to use the Sass version of Twitter Bootstrap?',
-    default: true,
-    when: function (props) {
-      return props.bootstrap && compass;
-    }
+    type: 'list',
+    name: 'framework',
+    message: 'Which CSS Framework would you like to include?',
+    default: 'bootstrap',
+    choices: [{
+      value: 'bootstrap',
+      name: 'Twitter Boostrap'
+    }, {
+      value: 'semanticui',
+      name: 'Semantic UI'
+    }]
   }], function (props) {
-    this.bootstrap = props.bootstrap;
-    this.compassBootstrap = props.compassBootstrap;
+    this.framework = props.framework;
 
     cb();
   }.bind(this));
 };
 
-Generator.prototype.askForSemanticUI = function askForSemanticUI() {
+Generator.prototype.askForFrameworkSASSVersion = function askForFrameworkSASSVersion() {
+  var compass = this.compass;
+  var framework = this.framework;
   var cb = this.async();
+
   this.prompt([{
     type: 'confirm',
-    name: 'semanticui',
-    message: 'Would you like to include Semantic UI ?',
-    default: false,
+    name: 'compassFramework',
+    message: 'Would you like to use the Sass version of Twitter Bootstrap?',
+    default: true,
     when: function (props) {
-      return !this.bootstrap;
-    }.bind(this)
+      return framework == 'bootstrap' && compass;
+    }
   }], function (props) {
-    this.semanticui = props.semanticui;
+    this.compassiBootstrap = props.compassFramework;
+
     cb();
   }.bind(this));
 };
