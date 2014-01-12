@@ -4,10 +4,10 @@
   "dependencies": {
     "angular": "1.2.6",
     "json3": "~3.2.6",
-    "es5-shim": "~2.1.0"<% if (bootstrap) { %>,
+    "es5-shim": "~2.1.0"<% if (framework == 'bootstrap') { %>,
     "jquery": "~1.10.2"<% if (compassBootstrap) { %>,
     "sass-bootstrap": "~3.0.2"<% } else { %>,
-    "bootstrap": "~3.0.3"<% } } %><% if(semanticui) {%>,
+    "bootstrap": "~3.0.3"<% } } %><% if(framework == 'semanticui') {%>,
     "semantic": "~0.11.0"<% } %><% if (resourceModule) { %>,
     "angular-resource": "1.2.6"<% } %><% if (cookiesModule) { %>,
     "angular-cookies": "1.2.6"<% } %><% if (sanitizeModule) { %>,

@@ -17,6 +17,9 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <!-- workaround issue [#536](https://github.com/Semantic-Org/Semantic-UI/issues/536)
+         It should work with grunt-bower-install otherwise -->
+    <% if(framework == 'semanticui') {%> <link rel="stylesheet" href="bower_components/semantic/build/packaged/css/semantic.css"> <% }%>
   </head>
   <body ng-app="<%= scriptAppName %>">
     <!--[if lt IE 7]>
@@ -50,5 +53,8 @@
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
+    <!-- workaround issue [#536](https://github.com/Semantic-Org/Semantic-UI/issues/536)
+         It should work with grunt-bower-install otherwise -->
+         <% if(framework == 'semanticui') {%> <script src="bower_components/semantic/build/packaged/javascript/semantic.js"></script> <% }%>
   </body>
 </html>
