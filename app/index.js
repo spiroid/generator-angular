@@ -253,8 +253,14 @@ Generator.prototype.readIndex = function readIndex() {
 Generator.prototype.commonFiles = function commonFiles() {
   var sass = this.compass;
   if(!this.framework) {
-      var mainFile = 'main.' + (sass ? 's' : '') + 'css';
-      this.copy('styles/' + mainFile, 'app/styles/' + mainFile);
+    var mainFile = 'main.' + (sass ? 's' : '') + 'css';
+    this.copy('styles/' + mainFile, 'app/styles/' + mainFile);
+  }
+  else {
+    // Copies the contents of the generator `templates`
+    // directory into your users new application path
+    this.sourceRoot(path.join(__dirname, '../templates/common'));
+    this.directory(this.framework, '.', true);
   }
 };
 
