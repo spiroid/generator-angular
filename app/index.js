@@ -55,15 +55,17 @@ var Generator = module.exports = function Generator(args, options) {
     args.push('--minsafe');
   }
 
-  this.hookFor('angular:common', {
+  console.log(args);
+
+  this.hookFor('angular-mine:common', {
     args: args
   });
 
-  this.hookFor('angular:main', {
+  this.hookFor('angular-mine:main', {
     args: args
   });
 
-  this.hookFor('angular:controller', {
+  this.hookFor('angular-mine:controller', {
     args: args
   });
 
@@ -181,7 +183,7 @@ Generator.prototype.askForFrameworkSASSVersion = function askForFrameworkSASSVer
       return framework == 'bootstrap' && compass;
     }
   }], function (props) {
-    this.compassiBootstrap = props.compassFramework;
+    this.compassBootstrap = props.compassFramework;
 
     cb();
   }.bind(this));
@@ -259,8 +261,7 @@ Generator.prototype.commonFiles = function commonFiles() {
   else {
     // Copies the contents of the generator `templates`
     // directory into your users new application path
-    this.sourceRoot(path.join(__dirname, '../templates/common'));
-    this.directory(this.framework, '.', true);
+    this.copy('../../templates/common/' + this.framework + '/app/views/main.html', 'app/views/main.html');
   }
 };
 
